@@ -1,17 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
+
 
 const RedirectToWhatsApp = () => {
+  const hasTracked = useRef(false); // Flag to check if the event has been tracked
+
+
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = "https://api.whatsapp.com/send?phone=601128459844&text=PMPromoLampuSolarDinding";
-    }, 1); // 100ms delay before redirect
+      window.location.href = "https://api.whatsapp.com/send?phone=60183943250&text=HaiSayaNak";
+    }, 41000); // 100ms delay before redirect
     
     return () => clearTimeout(timer); // Clean up the timer on component unmount
   }, []);
+
+  useEffect(() => {
+    if (window.fbq && !hasTracked.current) {
+      console.log('Tracking ViewContent');
+      window.fbq('track', 'ViewContent'); // Fire the event once
+      hasTracked.current = true; // Set the flag to true after firing the event
+    }
+  }, []); // Fires only once when the component mounts
   
   return (
     <div>
-      <h1>Promosi Untuk Anda Harini dari ProjekHome Malaysia, Redirect ke Whatsapp...</h1>
+      <h1>Redirecting to WhatsApp...</h1>
     </div>
   );
 };
