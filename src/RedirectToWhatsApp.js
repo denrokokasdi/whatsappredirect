@@ -11,7 +11,7 @@ const RedirectToWhatsApp = () => {
   
   return (
     <div>
-      <h1>Redirecting to WhatsApp...</h1>
+      <h1>Promosi Untuk Anda Harini dari ProjekHome Malaysia, Redirect ke Whatsapp...</h1>
     </div>
   );
 };
