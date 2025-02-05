@@ -7,7 +7,7 @@ const RedirectToWhatsApp = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      window.location.href = "https://api.whatsapp.com/send?phone=60183943250&text=HaiSayaNak";
+      window.location.href = "https://api.whatsapp.com/send?phone=601128459844&text=NakPromoLampuSolarDinding";
     }, 100); // 100ms delay before redirect
     
     return () => clearTimeout(timer); // Clean up the timer on component unmount
