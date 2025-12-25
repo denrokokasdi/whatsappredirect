@@ -1,26 +1,35 @@
 import React, { useEffect, useRef } from 'react';
 
-
 const RedirectToWhatsApp = () => {
-  const hasTracked = useRef(false); // Flag to check if the event has been tracked
-
+  const hasTracked = useRef({ viewContent: false, lead: false });
 
   useEffect(() => {
+    // Redirect after 100ms
     const timer = setTimeout(() => {
-      window.location.href = "https://api.whatsapp.com/send?phone=601128459844&text=NakPromoLampuSolarDinding";
-    }, 100); // 100ms delay before redirect
-    
-    return () => clearTimeout(timer); // Clean up the timer on component unmount
+      window.location.href = "https://api.whatsapp.com/send?phone=601128459844&text=NakPromoLampuSolar100LED";
+    }, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (window.fbq && !hasTracked.current) {
-      console.log('Tracking ViewContent');
-      window.fbq('track', 'ViewContent'); // Fire the event once
-      hasTracked.current = true; // Set the flag to true after firing the event
+    if (window.fbq) {
+      // Track ViewContent once
+      if (!hasTracked.current.viewContent) {
+        console.log('Tracking ViewContent');
+        window.fbq('track', 'ViewContent');
+        hasTracked.current.viewContent = true;
+      }
+
+      // Track Lead once
+      if (!hasTracked.current.lead) {
+        console.log('Tracking Lead');
+        window.fbq('track', 'Lead');
+        hasTracked.current.lead = true;
+      }
     }
-  }, []); // Fires only once when the component mounts
-  
+  }, []);
+
   return (
     <div>
       <h1>Redirecting to WhatsApp...</h1>
