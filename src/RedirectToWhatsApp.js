@@ -4,29 +4,33 @@ const RedirectToWhatsApp = () => {
   const hasTracked = useRef({ viewContent: false, lead: false });
 
   useEffect(() => {
-    // Redirect after 100ms
-    const timer = setTimeout(() => {
-      window.location.href = "https://api.whatsapp.com/send?phone=601128459844&text=NakPromoLampuSolar100LED";
-    }, 100);
+    const startTime = performance.now(); // Record start time
 
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
     if (window.fbq) {
-      // Track ViewContent once
+      // Fire ViewContent if not fired yet
       if (!hasTracked.current.viewContent) {
-        console.log('Tracking ViewContent');
+        console.log('Firing ViewContent...');
         window.fbq('track', 'ViewContent');
         hasTracked.current.viewContent = true;
       }
 
-      // Track Lead once
+      // Fire Lead if not fired yet
       if (!hasTracked.current.lead) {
-        console.log('Tracking Lead');
+        console.log('Firing Lead...');
         window.fbq('track', 'Lead');
         hasTracked.current.lead = true;
       }
+
+      // Wait a short delay to ensure Pixel requests are sent
+      setTimeout(() => {
+        const endTime = performance.now();
+        console.log(`Time taken from firing Pixel to redirect: ${Math.round(endTime - startTime)} ms`);
+        window.location.href = "https://api.whatsapp.com/send?phone=601128459844&text=NakPromoLampuSolar100LED";
+      }, 250); // 250ms is usually enough
+    } else {
+      // Fallback: Pixel not loaded, redirect immediately
+      console.log('FB Pixel not loaded, redirecting immediately');
+      window.location.href = "https://api.whatsapp.com/send?phone=601128459844&text=NakPromoLampuSolar100LED";
     }
   }, []);
 
