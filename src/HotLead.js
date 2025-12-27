@@ -6,16 +6,16 @@ const HotLead = () => {
   const [stockCount, setStockCount] = useState(73);
   const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 45, seconds: 0 });
   const [recentOrders, setRecentOrders] = useState([
-    { name: 'Ahmad', location: 'Kuala Lumpur', units: 4, time: 'baru sahaja' },
+    { name: 'Ahmad', location: 'Kuala Lumpur', units: 4, time: '2 jam lepas' },
     { name: 'Siti', location: 'Johor Bahru', units: 8, time: '25 minit lepas' },
     { name: 'Kumar', location: 'Penang', units: 4, time: '12 minit lepas' },
-    { name: 'Aina', location: 'Shah Alam', units: 1, time: '5 minit lepas' },
-    { name: 'Faiz', location: 'Ipoh', units: 8, time: '18 minit lepas' },
+    { name: 'Aina', location: 'Shah Alam', units: 1, time: '5 jam lepas' },
+    { name: 'Faiz', location: 'Ipoh', units: 8, time: '18 jam lepas' },
     { name: 'Nur', location: 'Melaka', units: 1, time: '54 minit lepas' },
-    { name: 'Daniel', location: 'Seremban', units: 4, time: '30 minit lepas' },
+    { name: 'Daniel', location: 'Seremban', units: 4, time: '30 jam lepas' },
     { name: 'Hafiz', location: 'Kuantan', units: 4, time: '40 minit lepas' },
     { name: 'Aisyah', location: 'Alor Setar', units: 8, time: '1 jam lepas' },
-    { name: 'Farhan', location: 'Miri', units: 1, time: '55 minit lepas' }
+    { name: 'Farhan', location: 'Miri', units: 1, time: '55 jam lepas' }
   ]);
 
   const [showFloatingButton, setShowFloatingButton] = useState(false);
@@ -159,9 +159,9 @@ const HotLead = () => {
       {showNotification && (
         <div style={{
           position: 'fixed',
-          top: '80px',
-          left: '20px',
-          backgroundColor: '#fff',
+          top: '40px',
+          right: '2px',
+          backgroundColor: '#fd8c29ff',
           padding: '12px 16px',
           borderRadius: '8px',
           boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
@@ -169,10 +169,11 @@ const HotLead = () => {
           maxWidth: '280px',
           fontFamily: 'Montserrat, sans-serif',
           fontSize: '13px',
-          border: '2px solid #25D366',
+          border: '2px solid ',
           opacity: fadeIn ? 1 : 0,
           transform: fadeIn ? 'translateX(0)' : 'translateX(-20px)',
-          transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out'
+          transition: 'opacity 0.5s ease-in-out, transform 0.5s ease-in-out',
+          zIndex: 1001
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             <FaCheckCircle color="#25D366" size={16} />
@@ -233,7 +234,7 @@ const HotLead = () => {
           </div>
 
         {/* Countdown Timer & Stock Counter */}
-        <div style={{
+        {/* <div style={{
           backgroundColor: '#ff0000',
           padding: '15px 20px',
           display: 'flex',
@@ -258,7 +259,7 @@ const HotLead = () => {
               {stockCount} UNIT!
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* Social Proof Banner */}
         {/* <div style={{
@@ -695,7 +696,7 @@ const HotLead = () => {
             }}>
               <div style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
                 <img 
-                  src="https://via.placeholder.com/50/CCCCCC/666666?text=A" 
+                  src="/my-11134233-820lg-mgqog02oq5u5f5_tn.jpg" 
                   alt="Ahmad Avatar"
                   style={{
                     width: '50px',
@@ -724,7 +725,7 @@ const HotLead = () => {
             }}>
               <div style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
                 <img 
-                  src="https://via.placeholder.com/50/CCCCCC/666666?text=S" 
+                  src="/my-11134233-7rasf-md1bl6yp18hba8_tn.jpg" 
                   alt="Siti Avatar"
                   style={{
                     width: '50px',
@@ -752,7 +753,7 @@ const HotLead = () => {
             }}>
               <div style={{ display: 'flex', gap: '10px', marginBottom: '8px' }}>
                 <img 
-                  src="https://via.placeholder.com/50/CCCCCC/666666?text=K" 
+                  src="/my-11134233-7r98x-ltxrix7jmhfx03_tn.jpg" 
                   alt="Kumar Avatar"
                   style={{
                     width: '50px',
@@ -762,7 +763,7 @@ const HotLead = () => {
                   }}
                 />
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: 'bold', fontFamily: 'Montserrat, sans-serif', fontSize: '14px' }}>Kumar Rajesh</div>
+                  <div style={{ fontWeight: 'bold', fontFamily: 'Montserrat, sans-serif', fontSize: '14px' }}>Salimi</div>
                   <div style={{ color: '#FFD700', fontSize: '14px' }}>⭐⭐⭐⭐⭐</div>
                 </div>
               </div>
@@ -1074,7 +1075,6 @@ const HotLead = () => {
             color: '#bdc3c7'
           }}>
             © 2025 HomeProject Malaysia. All Rights Reserved.<br/>
-            SSM Registration: 1234567-X (Replace with actual if available)
           </div>
         </div>
       </div>
